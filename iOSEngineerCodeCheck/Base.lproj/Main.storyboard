@@ -46,6 +46,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="RepoInfoCellIdentifier"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -56,7 +57,7 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="ktq-eC-ZBq"/>
                     <connections>
                         <outlet property="repoSearchBar" destination="6rq-CD-Hob" id="XG3-Ap-7lV"/>
-                        <segue destination="AHY-RL-7mG" kind="show" identifier="Detail" id="qqd-8W-4W1"/>
+                        <segue destination="AHY-RL-7mG" kind="show" identifier="DetailInfoView" id="qqd-8W-4W1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xer-fe-JeW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

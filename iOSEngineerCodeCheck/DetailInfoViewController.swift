@@ -18,31 +18,30 @@ class DetailInfoViewController: UIViewController {
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var openIssuesLabel: UILabel!
     
-    var searchViewController: SearchViewController!
+    var repoInfo: [String: Any]!
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let repo = searchViewController.repoList[searchViewController.index]
-        
-        languageLabel.text = "Written in \(repo["language"] as? String ?? "")"
-        starsLabel.text = "\(repo["stargazers_count"] as? Int ?? 0) stars"
-        watchersLabel.text = "\(repo["watchers_count"] as? Int ?? 0) watchers"
-        forksLabel.text = "\(repo["forks_count"] as? Int ?? 0) forks"
-        openIssuesLabel.text = "\(repo["open_issues_count"] as? Int ?? 0) open issues"
+        languageLabel.setText("Written in ",with: repoInfo["language"])
+        starsLabel.setText(repoInfo["stargazers_count"], with: " stars")
+        watchersLabel.setText(repoInfo["watchers_count"], with: " watchers")
+        forksLabel.setText(repoInfo["forks_count"], with: " forks")
+        openIssuesLabel.setText(repoInfo["open_issues_count"], with: " open issues")
+        titleLabel.setText(repoInfo["full_name"])
         getAvatarImage()
-        
     }
     
     func getAvatarImage() {
-        let repo = searchViewController.repoList[searchViewController.index]
-        titleLabel.text = repo["full_name"] as? String
         
-        if let owner = repo["owner"] as? [String: Any], let avatarImageURL = owner["avatar_url"] as? String {
-            // 画像をダウンロードする
-            URLSession.shared.dataTask(with: URL(string: avatarImageURL)!) { [weak self] (data, res, err) in
+        // 画像をダウンロードする
+        guard let owner = repoInfo["owner"] as? [String: Any], let avatarImageURL = owner["avatar_url"] as? String else { return }
+        if let url = URL(string: avatarImageURL) {
+            URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+                
                 guard let self = self else { return }
-                if let data = data, let image = UIImage(data: data) {
+                guard let data = data, error == nil else { return }
+                
+                if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self.avatarImageView.image = image
                     }
@@ -50,5 +49,4 @@ class DetailInfoViewController: UIViewController {
             }.resume()
         }
     }
-    
 }

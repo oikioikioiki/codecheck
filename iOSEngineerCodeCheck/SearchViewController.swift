@@ -14,13 +14,14 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     
     var repoList: [[String: Any]]=[]
     var task: URLSessionTask?
-    var index: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         repoSearchBar.text = "GitHubのリポジトリを検索できるよー"
         repoSearchBar.delegate = self
+        self.hideKeyboardWhenTappedAround()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RepoInfoCellIdentifier")
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
@@ -34,23 +35,30 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        if let keyWord = searchBar.text, keyWord.isNotEmpty {
-            let url = URL(string: "https://api.github.com/search/repositories?q=\(keyWord)")!
-            task = URLSession.shared.dataTask(with: url) { [weak self] (data, res, err) in
-                
-                guard let self = self else { return }
-                if let jasonData = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
-                    if let items = jasonData["items"] as? [[String: Any]] {
-                    self.repoList = items
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
+        searchBar.resignFirstResponder()
+        //リポジトリー検索
+        if let searchText = searchBar.text, searchText.isNotEmpty {
+            if let url = URL(string: "https://api.github.com/search/repositories?q=\(searchText)") {
+                task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+                    
+                    guard let self = self else { return }
+                    guard let data = data, error == nil else { return }
+                    
+                    do {
+                        let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                        if let items = jsonObject?["items"] as? [[String: Any]] {
+                            self.repoList = items
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                        }
+                    } catch {
+                        print("JSONのパースエラー: \(error)")
                     }
                 }
+                // これ呼ばなきゃリストが更新されません
+                task?.resume()
             }
-        }
-        // これ呼ばなきゃリストが更新されません
-        task?.resume()
         }
         
     }
@@ -58,8 +66,8 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "DetailInfoView" {
-            let detailView = segue.destination as! DetailInfoViewController
-            detailView.searchViewController = self
+            guard let detailView = segue.destination as? DetailInfoViewController, let repoInfo = sender as? [String: Any] else { return }
+            detailView.repoInfo = repoInfo
         }
     }
     
@@ -69,20 +77,22 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RepoInfoCellIdentifier", for: indexPath)
         let repoInfo = repoList[indexPath.row]
-        cell.textLabel?.text = repoInfo["full_name"] as? String ?? ""
-        cell.detailTextLabel?.text = repoInfo["language"] as? String ?? ""
-        cell.tag = indexPath.row
+        cell.textLabel?.setText(repoInfo["full_name"])
+        cell.detailTextLabel?.setText(repoInfo["language"])
         return cell
         
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 画面遷移時に呼ばれる
-        index = indexPath.row
-        performSegue(withIdentifier: "DetailInfoView", sender: self)
-        
+        if indexPath.row >= repoList.count { return }
+        performSegue(withIdentifier: "DetailInfoView", sender: repoList[indexPath.row])
+    }
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.dismissKeyboard()
     }
     
 }
