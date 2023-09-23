@@ -11,38 +11,20 @@ import Foundation
 class SearchViewModel {
     
     var repoList: [RepoResponse] = []
-    var task: URLSessionTask?
     
-    func searchRepositories(_ text: String, completeHandler: @escaping (Bool) -> Void) {
+    func getRepositories(_ text: String, completeHandler: @escaping (Bool) -> Void) {
         
-        if let url = URL(string: "https://api.github.com/search/repositories?q=\(text)") {
-            task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-                
-                guard let self = self else {
-                    completeHandler(false)
-                    return
-                }
-                guard let data = data, error == nil else {
-                    completeHandler(false)
-                    return
-                }
-                
-                do {
-                    let jasonData = try JSONDecoder().decode(SearchRepoResponse.self, from: data)
-                    if let items = jasonData.items {
-                        self.repoList = items
-                        completeHandler(true)
-                    }
-                } catch {
-                    completeHandler(false)
-                    print("JSONのパースエラー: \(error)")
-                }
+        WebAPI.searchRepositories(data: SearchRepoRequest(text), completeHandler: { [weak self] (data, response, error) in
+            
+            guard let self = self, let data = data, error == nil else {
+                completeHandler(false)
+                return
             }
-            // これ呼ばなきゃリストが更新されません
-            task?.resume()
-        } else {
-            completeHandler(false)
-        }
+            
+            self.repoList = data
+            completeHandler(true)
+        })
+
     }
     
     func numberOfRepositories() -> Int {

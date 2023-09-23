@@ -67,7 +67,6 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.task?.cancel()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -75,7 +74,7 @@ extension SearchViewController: UISearchBarDelegate {
         //リポジトリー検索
         if let searchText = searchBar.text, searchText.isNotEmpty {
             
-            viewModel.searchRepositories(searchText, completeHandler: { [weak self] success in
+            viewModel.getRepositories(searchText, completeHandler: { [weak self] success in
                 guard let self = self else { return }
                 if success {
                     DispatchQueue.main.async {

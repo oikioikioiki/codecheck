@@ -38,44 +38,34 @@ class DetailInfoViewModel {
         return "\(repoInfo.openIssuesCount) open issues"
     }
     
-    var avatarURL: URL? {
+    var avatarURL: String? {
         guard let avatarImageURLString = repoInfo.owner?.avatarURL else {
             return nil
         }
-        return URL(string: avatarImageURLString)
+        return avatarImageURLString
     }
     
     init(_ repoInfo: RepoResponse) {
         self.repoInfo = repoInfo
     }
     
-    func getAvatarImage(imageURL: URL?, completeHandler: @escaping (Bool) -> Void) {
+    func getAvatarImage(imageURL: String?, completeHandler: @escaping (Bool) -> Void) {
         
         guard let imageURL = imageURL else {
             completeHandler(false)
             return
         }
         
-        URLSession.shared.dataTask(with: imageURL) { [weak self] (data, response, error) in
+        WebAPI.getImageData(url: imageURL, completeHandler: { [weak self] (data, response, error) in
             
-            guard let self = self else {
+            guard let self = self, let data = data, error == nil else {
                 completeHandler(false)
                 return
             }
             
-            guard let data = data, error == nil else {
-                completeHandler(false)
-                return
-            }
-            
-            if let image = UIImage(data: data) {
-                avatarImage = image
-                completeHandler(true)
-            } else {
-                completeHandler(false)
-            }
-            }.resume()
-        
+            avatarImage = data
+            completeHandler(true)
+        })
         
     }
 }

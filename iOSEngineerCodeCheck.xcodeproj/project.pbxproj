@@ -11,6 +11,9 @@
 		141BFAA72ABD421800AD3126 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAA62ABD421800AD3126 /* SearchViewModel.swift */; };
 		141BFAAB2ABD441100AD3126 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAAA2ABD441100AD3126 /* Response.swift */; };
 		141BFAAE2ABF147200AD3126 /* DetailInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAAD2ABF147200AD3126 /* DetailInfoViewModel.swift */; };
+		141BFAB02ABF6F6200AD3126 /* WebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAAF2ABF6F6200AD3126 /* WebAPI.swift */; };
+		141BFAB22ABF6FE000AD3126 /* WebAPIDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAB12ABF6FE000AD3126 /* WebAPIDefinition.swift */; };
+		141BFAB52ABF71BE00AD3126 /* SearchRepoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAB42ABF71BE00AD3126 /* SearchRepoRequest.swift */; };
 		BF0A658D244F2A3B00280FA6 /* DetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* DetailInfoViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -44,6 +47,9 @@
 		141BFAA62ABD421800AD3126 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		141BFAAA2ABD441100AD3126 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		141BFAAD2ABF147200AD3126 /* DetailInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoViewModel.swift; sourceTree = "<group>"; };
+		141BFAAF2ABF6F6200AD3126 /* WebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPI.swift; sourceTree = "<group>"; };
+		141BFAB12ABF6FE000AD3126 /* WebAPIDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIDefinition.swift; sourceTree = "<group>"; };
+		141BFAB42ABF71BE00AD3126 /* SearchRepoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepoRequest.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* DetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,7 +112,10 @@
 		141BFAA82ABD43F400AD3126 /* WebAPI */ = {
 			isa = PBXGroup;
 			children = (
+				141BFAB32ABF71A200AD3126 /* Request */,
 				141BFAA92ABD43FB00AD3126 /* Response */,
+				141BFAAF2ABF6F6200AD3126 /* WebAPI.swift */,
+				141BFAB12ABF6FE000AD3126 /* WebAPIDefinition.swift */,
 			);
 			path = WebAPI;
 			sourceTree = "<group>";
@@ -126,6 +135,14 @@
 				141BFAAD2ABF147200AD3126 /* DetailInfoViewModel.swift */,
 			);
 			path = DetalInfoVIew;
+			sourceTree = "<group>";
+		};
+		141BFAB32ABF71A200AD3126 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				141BFAB42ABF71BE00AD3126 /* SearchRepoRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		BFD945D2244DC5E80012785A = {
@@ -317,11 +334,14 @@
 			files = (
 				141BFAA72ABD421800AD3126 /* SearchViewModel.swift in Sources */,
 				141BFAA42ABCA01800AD3126 /* Extensions.swift in Sources */,
+				141BFAB22ABF6FE000AD3126 /* WebAPIDefinition.swift in Sources */,
 				BFD945E3244DC5E80012785A /* SearchViewController.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* DetailInfoViewController.swift in Sources */,
+				141BFAB02ABF6F6200AD3126 /* WebAPI.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				141BFAAB2ABD441100AD3126 /* Response.swift in Sources */,
+				141BFAB52ABF71BE00AD3126 /* SearchRepoRequest.swift in Sources */,
 				141BFAAE2ABF147200AD3126 /* DetailInfoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,14 +555,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7G9J68NLX;
+				DEVELOPMENT_TEAM = 5CN4736Q6M;
 				INFOPLIST_FILE = iOSEngineerCodeCheckTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.yumemi.iOSEngineerCodeCheckTests;
+				PRODUCT_BUNDLE_IDENTIFIER = demo.CatAPI.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -556,14 +576,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7G9J68NLX;
+				DEVELOPMENT_TEAM = 5CN4736Q6M;
 				INFOPLIST_FILE = iOSEngineerCodeCheckTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.yumemi.iOSEngineerCodeCheckTests;
+				PRODUCT_BUNDLE_IDENTIFIER = demo.CatAPI.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -576,14 +596,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7G9J68NLX;
+				DEVELOPMENT_TEAM = 5CN4736Q6M;
 				INFOPLIST_FILE = iOSEngineerCodeCheckUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.yumemi.iOSEngineerCodeCheckUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = demo.CatAPI.UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -596,14 +616,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7G9J68NLX;
+				DEVELOPMENT_TEAM = 5CN4736Q6M;
 				INFOPLIST_FILE = iOSEngineerCodeCheckUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.yumemi.iOSEngineerCodeCheckUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = demo.CatAPI.UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
