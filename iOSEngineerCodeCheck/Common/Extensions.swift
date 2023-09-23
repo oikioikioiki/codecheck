@@ -74,3 +74,25 @@ extension UILabel {
         self.text = "\(intValue ?? 0)"
     }
 }
+
+extension Encodable {
+
+    var json: Data? {
+        let encoder = JSONEncoder()
+        return try? encoder.encode(self)
+    }
+    
+    var dictionary: [String: Any]? {
+        guard let data = try? JSONEncoder().encode(self) else { return nil }
+        return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)).flatMap { $0 as? [String: Any] }
+    }
+}
+
+extension Decodable {
+
+    static func decode(json data: Data?) -> Self? {
+        guard let data = data else { return nil }
+        let decoder = JSONDecoder()
+        return try? decoder.decode(Self.self, from: data)
+    }
+}
