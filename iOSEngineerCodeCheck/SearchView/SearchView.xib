@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
+            <connections>
+                <outlet property="repoSearchBar" destination="y7a-ID-75p" id="FcA-XP-9Hq"/>
+                <outlet property="repoTableView" destination="thl-XO-QeH" id="smv-rq-HXp"/>
+                <outlet property="view" destination="iN0-l3-epB" id="EP4-by-NxJ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="thl-XO-QeH">
+                    <rect key="frame" x="0.0" y="103" width="393" height="755"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <searchBar key="tableHeaderView" contentMode="redraw" id="y7a-ID-75p">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <outlet property="delegate" destination="-1" id="CG2-gM-2H6"/>
+                        </connections>
+                    </searchBar>
+                </tableView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YYT-vN-7iw">
+                    <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <color key="barTintColor" systemColor="systemBackgroundColor"/>
+                    <items>
+                        <navigationItem title="Root View Controller" id="JIq-Dv-zuG"/>
+                    </items>
+                </navigationBar>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="YYT-vN-7iw" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="3e8-HD-3lf"/>
+                <constraint firstItem="thl-XO-QeH" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="8vw-yX-Veo"/>
+                <constraint firstItem="YYT-vN-7iw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="TpG-Of-wWv"/>
+                <constraint firstItem="thl-XO-QeH" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="40" id="WvS-ba-Ili"/>
+                <constraint firstItem="thl-XO-QeH" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="cve-NI-tjt"/>
+                <constraint firstItem="YYT-vN-7iw" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="kGf-hZ-1Mx"/>
+                <constraint firstItem="thl-XO-QeH" firstAttribute="top" secondItem="YYT-vN-7iw" secondAttribute="bottom" id="xFo-iS-4eP"/>
+            </constraints>
+            <point key="canvasLocation" x="-16.030534351145036" y="20.422535211267608"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
