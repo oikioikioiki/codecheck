@@ -12,6 +12,7 @@ enum FetchError: Error {
     
     case noNetwork
     case failed
+    case noData
     case parameter
     case authError
 }

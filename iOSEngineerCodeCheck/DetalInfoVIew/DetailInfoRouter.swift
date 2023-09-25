@@ -12,6 +12,7 @@ import UIKit
 
 protocol DetailInfoRouter {
     
+    func presentWebVIew(info: RepoTableCellContent)
 }
 
 class DetailInfoUserRouter {
@@ -40,5 +41,13 @@ class DetailInfoUserRouter {
 }
 
 extension DetailInfoUserRouter: DetailInfoRouter {
+    
+    func presentWebVIew(info: RepoTableCellContent) {
+        
+        DispatchQueue.main.async {
+            let vc = WebViewController(URL(string: info.htmlURL)!)
+            self.viewController?.present(vc, animated: true)
+        }
+    }
     
 }

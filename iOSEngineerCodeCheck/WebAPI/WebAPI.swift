@@ -24,11 +24,10 @@ class WebAPI{
                 completeHandler(nil, response, FetchError.noNetwork)
                 return
             }
-
             do{
                 let decoder = JSONDecoder()
                 let jasonData = try decoder.decode(SearchRepoResponse.self, from: data)
-                completeHandler(jasonData.items, response, nil)
+                completeHandler(jasonData.items, response, jasonData.items != nil ? nil : FetchError.noData)
             }catch{
                 print("Error : GetUserRepoResponse decodeError")
                 completeHandler(nil, response, FetchError.parameter)

@@ -10,7 +10,7 @@ import Foundation
 
 struct SearchRepoResponse: Codable {
     
-    let totalCount: Int?
+    let totalCount: Int
     let incompleteResults: Bool?
     let items: [RepoResponse]?
     
@@ -26,6 +26,7 @@ struct RepoResponse: Codable {
     
     let fullName: String
     let language: String?
+    let htmlURL: String
     let stargazersCount: Int
     let watchersCount: Int
     let forksCount: Int
@@ -41,6 +42,7 @@ struct RepoResponse: Codable {
         case watchersCount = "watchers_count"
         case forksCount = "forks_count"
         case openIssuesCount = "open_issues_count"
+        case htmlURL = "html_url"
         case owner = "owner"
     }
 }

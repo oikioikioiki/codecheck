@@ -62,6 +62,9 @@ class DetailInfoViewController: UIViewController {
         titleLabel.text = repoDetailInfo.name
     }
     
+    @IBAction func openWebViewButtonAction(_ sender: Any) {
+        presenter?.showWebView(repoDetailInfo)
+    }
 }
 
 extension DetailInfoViewController: DetailInfoView {

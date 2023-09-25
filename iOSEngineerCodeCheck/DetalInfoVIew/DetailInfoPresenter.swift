@@ -13,6 +13,7 @@ protocol DetailInfoPresenter {
     
     //View
     func viewDidLoad(_ data: RepoTableCellContent)
+    func showWebView(_ data: RepoTableCellContent)
     
     //Interactor
     func didFetchImageData(with result: Result<UIImage, Error>)
@@ -52,6 +53,10 @@ extension DetailInfoUserPresenter: DetailInfoPresenter {
         case .failure(_):
             break
         }
+    }
+    
+    func showWebView(_ data: RepoTableCellContent) {
+        router.presentWebVIew(info: data)
     }
     
     

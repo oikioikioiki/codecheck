@@ -10,7 +10,7 @@ import UIKit
 
 protocol SearchView: AnyObject {
     
-    func updateRepoList(list: [RepoTableCellContent])
+    func updateRepoList(list: [RepoTableCellContent], moreInfo: Bool)
 }
 
 class SearchViewController: UIViewController {
@@ -80,6 +80,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UISc
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.dismissKeyboard()
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let willShowElement = repoList.count - 4
+        if indexPath.row >= willShowElement{
+            presenter?.updateMoreRepoInfo(lastCount: repoList.count)
+        }
+    }
 
 }
 
@@ -95,11 +103,17 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: SearchView {
     
-    func updateRepoList(list: [RepoTableCellContent]) {
+    func updateRepoList(list: [RepoTableCellContent], moreInfo: Bool) {
+        
         DispatchQueue.main.async {
-            self.repoList = list
+            if moreInfo {
+                self.repoList.append(contentsOf: list)
+            } else {
+                self.repoList = list
+            }
             self.repoTableView.reloadData()
         }
+        
     }
     
 }

@@ -10,7 +10,7 @@ import Foundation
 
 protocol SearchInteractor {
     
-    func getRepositories(_ text: String)
+    func getRepositories(_ content: RepoSearchContent)
     
 }
 
@@ -26,16 +26,16 @@ class SearchUserInteractor {
 
 extension SearchUserInteractor: SearchInteractor {
     
-    func getRepositories(_ text: String) {
+    func getRepositories(_ content: RepoSearchContent) {
         
-        WebAPI.searchRepositories(data: SearchRepoRequest(text), completeHandler: { [weak self] (data, response, error) in
+        WebAPI.searchRepositories(data: SearchRepoRequest(content.repoName, page: content.page, perPage: 50), completeHandler: { [weak self] (data, response, error) in
             
             guard let self = self else { return }
             guard let data = data, error == nil else {
-                self.presenter?.didFetchReposData(with: .failure(error as! FetchError))
+                self.presenter?.didFetchReposData(with: .failure(error as! FetchError), moreInfo: false)
                 return
             }
-            self.presenter?.didFetchReposData(with: .success(EntityUtils.repoResponseToRepoTableCellContent(data)))
+            self.presenter?.didFetchReposData(with: .success(EntityUtils.repoResponseToRepoTableCellContent(data)), moreInfo: content.page > 1 ? true : false)
         })
 
     }

@@ -24,6 +24,11 @@
 		141BFAC92AC0347300AD3126 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAC72AC0347300AD3126 /* RepoTableViewCell.swift */; };
 		141BFACA2AC0347300AD3126 /* RepoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141BFAC82AC0347300AD3126 /* RepoTableViewCell.xib */; };
 		141BFACC2AC065F200AD3126 /* EntityUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFACB2AC065F200AD3126 /* EntityUtils.swift */; };
+		141BFAD62AC2000900AD3126 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAD12AC2000800AD3126 /* WebView.swift */; };
+		141BFAD72AC2000900AD3126 /* WebInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAD22AC2000900AD3126 /* WebInteractor.swift */; };
+		141BFAD82AC2000900AD3126 /* WebPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAD32AC2000900AD3126 /* WebPresenter.swift */; };
+		141BFAD92AC2000900AD3126 /* WebRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAD42AC2000900AD3126 /* WebRouter.swift */; };
+		141BFADA2AC2000900AD3126 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141BFAD52AC2000900AD3126 /* WebView.xib */; };
 		BF0A658D244F2A3B00280FA6 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* DetailInfoView.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -69,6 +74,11 @@
 		141BFAC72AC0347300AD3126 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
 		141BFAC82AC0347300AD3126 /* RepoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoTableViewCell.xib; sourceTree = "<group>"; };
 		141BFACB2AC065F200AD3126 /* EntityUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityUtils.swift; sourceTree = "<group>"; };
+		141BFAD12AC2000800AD3126 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		141BFAD22AC2000900AD3126 /* WebInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebInteractor.swift; sourceTree = "<group>"; };
+		141BFAD32AC2000900AD3126 /* WebPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPresenter.swift; sourceTree = "<group>"; };
+		141BFAD42AC2000900AD3126 /* WebRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRouter.swift; sourceTree = "<group>"; };
+		141BFAD52AC2000900AD3126 /* WebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,10 +165,10 @@
 			isa = PBXGroup;
 			children = (
 				BF0A658C244F2A3B00280FA6 /* DetailInfoView.swift */,
+				141BFAC42AC021CF00AD3126 /* DetailInfoView.xib */,
 				141BFABC2AC019D700AD3126 /* DetailInfoPresenter.swift */,
 				141BFABE2AC019E300AD3126 /* DetailInfoRouter.swift */,
 				141BFAC02AC019F200AD3126 /* DetailInfoInteractor.swift */,
-				141BFAC42AC021CF00AD3126 /* DetailInfoView.xib */,
 			);
 			path = DetalInfoVIew;
 			sourceTree = "<group>";
@@ -188,6 +198,18 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		141BFAD02AC1FFF700AD3126 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				141BFAD22AC2000900AD3126 /* WebInteractor.swift */,
+				141BFAD32AC2000900AD3126 /* WebPresenter.swift */,
+				141BFAD42AC2000900AD3126 /* WebRouter.swift */,
+				141BFAD12AC2000800AD3126 /* WebView.swift */,
+				141BFAD52AC2000900AD3126 /* WebView.xib */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		BFD945D2244DC5E80012785A = {
 			isa = PBXGroup;
 			children = (
@@ -211,9 +233,10 @@
 		BFD945DD244DC5E80012785A /* iOSEngineerCodeCheck */ = {
 			isa = PBXGroup;
 			children = (
+				141BFAD02AC1FFF700AD3126 /* WebView */,
 				141BFAAC2ABF144A00AD3126 /* DetalInfoVIew */,
-				141BFAA82ABD43F400AD3126 /* WebAPI */,
 				141BFAA52ABD41F900AD3126 /* SearchView */,
+				141BFAA82ABD43F400AD3126 /* WebAPI */,
 				141BFACD2AC080B600AD3126 /* Models */,
 				141BFAA22ABC9FF700AD3126 /* Common */,
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
@@ -353,6 +376,7 @@
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
 				141BFAC32AC0203E00AD3126 /* SearchView.xib in Resources */,
 				141BFACA2AC0347300AD3126 /* RepoTableViewCell.xib in Resources */,
+				141BFADA2AC2000900AD3126 /* WebView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,12 +408,16 @@
 				141BFAB22ABF6FE000AD3126 /* WebAPIDefinition.swift in Sources */,
 				141BFACC2AC065F200AD3126 /* EntityUtils.swift in Sources */,
 				141BFAC92AC0347300AD3126 /* RepoTableViewCell.swift in Sources */,
+				141BFAD72AC2000900AD3126 /* WebInteractor.swift in Sources */,
 				BFD945E3244DC5E80012785A /* SearchView.swift in Sources */,
+				141BFAD92AC2000900AD3126 /* WebRouter.swift in Sources */,
 				141BFABD2AC019D700AD3126 /* DetailInfoPresenter.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* DetailInfoView.swift in Sources */,
 				141BFAC12AC019F200AD3126 /* DetailInfoInteractor.swift in Sources */,
 				141BFAB02ABF6F6200AD3126 /* WebAPI.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
+				141BFAD62AC2000900AD3126 /* WebView.swift in Sources */,
+				141BFAD82AC2000900AD3126 /* WebPresenter.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				141BFAAB2ABD441100AD3126 /* Response.swift in Sources */,
 				141BFAB52ABF71BE00AD3126 /* SearchRepoRequest.swift in Sources */,

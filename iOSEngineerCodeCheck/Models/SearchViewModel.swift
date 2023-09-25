@@ -17,8 +17,9 @@ class RepoTableCellContent {
     let forks: Int
     let openIssues: Int
     let avatarImageURL: String?
+    let htmlURL: String
     
-    init(name: String, language: String?, stars: Int, watchers: Int, forks: Int, openIssues: Int, avatarImageURL: String?) {
+    init(name: String, language: String?, stars: Int, watchers: Int, forks: Int, openIssues: Int, avatarImageURL: String?, htmlURL: String) {
         self.name = name
         self.language = language
         self.stars = stars
@@ -26,5 +27,28 @@ class RepoTableCellContent {
         self.forks = forks
         self.openIssues = openIssues
         self.avatarImageURL = avatarImageURL
+        self.htmlURL = htmlURL
+    }
+}
+
+class RepoSearchContent {
+    
+    var repoName: String
+    var page: Int
+    var lastListCount: Int = 0
+    var isNotFinal: Bool = true
+    
+    init(repoName: String, page: Int = 1) {
+        self.repoName = repoName
+        self.page = page
+    }
+    
+    func updatePage(_ lastCunt: Int = 0) {
+        self.page += 1
+        self.lastListCount = lastCunt
+    }
+    
+    func setFinal() {
+        self.isNotFinal = false
     }
 }

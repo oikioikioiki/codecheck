@@ -18,7 +18,7 @@ class EntityUtils {
         }
         
         for element in list {
-            resultRepoList.append(RepoTableCellContent(name: element.fullName, language: element.language, stars: element.stargazersCount, watchers: element.watchersCount, forks: element.forksCount, openIssues: element.openIssuesCount, avatarImageURL: element.owner?.avatarURL))
+            resultRepoList.append(RepoTableCellContent(name: element.fullName, language: element.language, stars: element.stargazersCount, watchers: element.watchersCount, forks: element.forksCount, openIssues: element.openIssuesCount, avatarImageURL: element.owner?.avatarURL, htmlURL: element.htmlURL))
         }
         
         return resultRepoList
