@@ -10,7 +10,7 @@ import Foundation
 
 class SearchRepoRequest {
     
-    private let repo: String
+    let repo: String
     private let page: Int
     private let perPage: Int
     

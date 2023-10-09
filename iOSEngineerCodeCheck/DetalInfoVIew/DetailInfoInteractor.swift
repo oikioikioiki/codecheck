@@ -16,9 +16,11 @@ protocol DetailInfoInteractor {
 class DetailInfoUserInteractor {
     
     var presenter: DetailInfoPresenter?
+    var apiClient: APIClientProtocol?
     
-    func setPresenter(presenter: DetailInfoPresenter) {
+    func setPresenter(presenter: DetailInfoPresenter, apiClient: APIClientProtocol? = WebAPI()) {
         self.presenter = presenter
+        self.apiClient = apiClient
     }
     
 }
@@ -27,15 +29,18 @@ extension DetailInfoUserInteractor: DetailInfoInteractor {
     
     func getAvatarImage(url: String){
             
-        WebAPI.getImageData(url: url, completeHandler: { [weak self] (data, response, error) in
+        apiClient?.getImageData(url: url, completeHandler: { [weak self] (result) in
              
             guard let self = self else { return }
-            guard let data = data, error == nil else {
-                self.presenter?.didFetchImageData(with: .failure(error as! FetchError))
-                return
-            }
             
-            self.presenter?.didFetchImageData(with: .success(data))
+            switch result {
+            case .success(let data):
+                self.presenter?.didFetchImageData(with: .success(data))
+                break
+            case .failure(let error):
+                self.presenter?.didFetchImageData(with: .failure(error))
+                break
+            }
            
         })
             

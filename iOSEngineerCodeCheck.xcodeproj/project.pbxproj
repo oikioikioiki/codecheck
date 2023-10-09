@@ -29,6 +29,9 @@
 		141BFAD82AC2000900AD3126 /* WebPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAD32AC2000900AD3126 /* WebPresenter.swift */; };
 		141BFAD92AC2000900AD3126 /* WebRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFAD42AC2000900AD3126 /* WebRouter.swift */; };
 		141BFADA2AC2000900AD3126 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 141BFAD52AC2000900AD3126 /* WebView.xib */; };
+		141BFADC2AD3356500AD3126 /* WebAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFADB2AD3356500AD3126 /* WebAPITest.swift */; };
+		141BFADE2AD3EC3800AD3126 /* MockAPIStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFADD2AD3EC3800AD3126 /* MockAPIStub.swift */; };
+		141BFAE02AD40E8200AD3126 /* WebAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFADF2AD40E8200AD3126 /* WebAPIMock.swift */; };
 		BF0A658D244F2A3B00280FA6 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* DetailInfoView.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -79,6 +82,9 @@
 		141BFAD32AC2000900AD3126 /* WebPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPresenter.swift; sourceTree = "<group>"; };
 		141BFAD42AC2000900AD3126 /* WebRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRouter.swift; sourceTree = "<group>"; };
 		141BFAD52AC2000900AD3126 /* WebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
+		141BFADB2AD3356500AD3126 /* WebAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPITest.swift; sourceTree = "<group>"; };
+		141BFADD2AD3EC3800AD3126 /* MockAPIStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIStub.swift; sourceTree = "<group>"; };
+		141BFADF2AD40E8200AD3126 /* WebAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIMock.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -252,6 +258,9 @@
 			isa = PBXGroup;
 			children = (
 				BFD945F5244DC5EB0012785A /* iOSEngineerCodeCheckTests.swift */,
+				141BFADF2AD40E8200AD3126 /* WebAPIMock.swift */,
+				141BFADD2AD3EC3800AD3126 /* MockAPIStub.swift */,
+				141BFADB2AD3356500AD3126 /* WebAPITest.swift */,
 				BFD945F7244DC5EB0012785A /* Info.plist */,
 			);
 			path = iOSEngineerCodeCheckTests;
@@ -430,7 +439,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				141BFADE2AD3EC3800AD3126 /* MockAPIStub.swift in Sources */,
+				141BFAE02AD40E8200AD3126 /* WebAPIMock.swift in Sources */,
 				BFD945F6244DC5EB0012785A /* iOSEngineerCodeCheckTests.swift in Sources */,
+				141BFADC2AD3356500AD3126 /* WebAPITest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

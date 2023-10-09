@@ -17,9 +17,11 @@ protocol SearchInteractor {
 class SearchUserInteractor {
     
     var presenter: SearchPresenter?
+    private var apiClient: APIClientProtocol?
     
-    func setPresenter(presenter: SearchPresenter) {
+    func setPresenter(presenter: SearchPresenter, apiClient: APIClientProtocol? = WebAPI()) {
         self.presenter = presenter
+        self.apiClient = apiClient
     }
     
 }
@@ -28,14 +30,19 @@ extension SearchUserInteractor: SearchInteractor {
     
     func getRepositories(_ content: RepoSearchContent) {
         
-        WebAPI.searchRepositories(data: SearchRepoRequest(content.repoName, page: content.page, perPage: 50), completeHandler: { [weak self] (data, response, error) in
+        apiClient?.searchRepositories(data: SearchRepoRequest(content.repoName, page: content.page, perPage: 50), completeHandler: { [weak self] (result) in
             
             guard let self = self else { return }
-            guard let data = data, error == nil else {
-                self.presenter?.didFetchReposData(with: .failure(error as! FetchError), moreInfo: false)
-                return
+
+            switch result {
+            case .success(let data):
+                self.presenter?.didFetchReposData(with: .success(EntityUtils.repoResponseToRepoTableCellContent(data)), moreInfo: content.page > 1 ? true : false)
+                break
+            case .failure(let error):
+                self.presenter?.didFetchReposData(with: .failure(error), moreInfo: false)
+                break
             }
-            self.presenter?.didFetchReposData(with: .success(EntityUtils.repoResponseToRepoTableCellContent(data)), moreInfo: content.page > 1 ? true : false)
+            
         })
 
     }
