@@ -10,6 +10,7 @@ import UIKit
 
 class RepoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var avatarImageView: CircularImageView!
     @IBOutlet weak var repoFullName: UILabel!
     @IBOutlet weak var repoLanguage: UILabel!
     
@@ -28,5 +29,6 @@ class RepoTableViewCell: UITableViewCell {
     func set(context: RepoTableCellContent){
         self.repoFullName.text = context.name
         self.repoLanguage.text = context.language
+        self.avatarImageView.image = context.image
     }
 }

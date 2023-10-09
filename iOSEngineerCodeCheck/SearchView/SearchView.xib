@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundView" destination="iN0-l3-epB" id="XdH-23-Syt"/>
                 <outlet property="repoSearchBar" destination="y7a-ID-75p" id="FcA-XP-9Hq"/>
                 <outlet property="repoTableView" destination="thl-XO-QeH" id="smv-rq-HXp"/>
                 <outlet property="view" destination="iN0-l3-epB" id="EP4-by-NxJ"/>
@@ -21,6 +22,23 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJN-kH-dHw">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="103"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GitHub Repo Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7G-We-Jr8">
+                            <rect key="frame" x="99.666666666666671" y="66.666666666666671" width="193.66666666666663" height="26.333333333333329"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="103" id="cSc-2U-EYI"/>
+                        <constraint firstItem="d7G-We-Jr8" firstAttribute="centerX" secondItem="OJN-kH-dHw" secondAttribute="centerX" id="xA6-l8-dPB"/>
+                        <constraint firstAttribute="bottom" secondItem="d7G-We-Jr8" secondAttribute="bottom" constant="10" id="zAb-if-GEh"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="thl-XO-QeH">
                     <rect key="frame" x="0.0" y="103" width="393" height="755"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -33,24 +51,17 @@
                         </connections>
                     </searchBar>
                 </tableView>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YYT-vN-7iw">
-                    <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                    <color key="barTintColor" systemColor="systemBackgroundColor"/>
-                    <items>
-                        <navigationItem title="Root View Controller" id="JIq-Dv-zuG"/>
-                    </items>
-                </navigationBar>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="YYT-vN-7iw" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="3e8-HD-3lf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="OJN-kH-dHw" secondAttribute="top" constant="59" id="2Dx-oR-UZ3"/>
                 <constraint firstItem="thl-XO-QeH" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="8vw-yX-Veo"/>
-                <constraint firstItem="YYT-vN-7iw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="TpG-Of-wWv"/>
+                <constraint firstItem="OJN-kH-dHw" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="FFI-bX-bRJ"/>
+                <constraint firstItem="OJN-kH-dHw" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Hda-28-d5i"/>
+                <constraint firstItem="thl-XO-QeH" firstAttribute="top" secondItem="OJN-kH-dHw" secondAttribute="bottom" id="L4r-jT-Nj2"/>
                 <constraint firstItem="thl-XO-QeH" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="40" id="WvS-ba-Ili"/>
                 <constraint firstItem="thl-XO-QeH" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="cve-NI-tjt"/>
-                <constraint firstItem="YYT-vN-7iw" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="kGf-hZ-1Mx"/>
-                <constraint firstItem="thl-XO-QeH" firstAttribute="top" secondItem="YYT-vN-7iw" secondAttribute="bottom" id="xFo-iS-4eP"/>
             </constraints>
             <point key="canvasLocation" x="-16.030534351145036" y="20.422535211267608"/>
         </view>

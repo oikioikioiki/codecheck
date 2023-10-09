@@ -32,6 +32,9 @@
 		141BFADC2AD3356500AD3126 /* WebAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFADB2AD3356500AD3126 /* WebAPITest.swift */; };
 		141BFADE2AD3EC3800AD3126 /* MockAPIStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFADD2AD3EC3800AD3126 /* MockAPIStub.swift */; };
 		141BFAE02AD40E8200AD3126 /* WebAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFADF2AD40E8200AD3126 /* WebAPIMock.swift */; };
+		143637322AD44E5200E9A575 /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143637312AD44E5200E9A575 /* CircularImageView.swift */; };
+		143637352AD4678800E9A575 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 143637342AD4678800E9A575 /* ProgressHUD */; };
+		143637372AD46DD400E9A575 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143637362AD46DD400E9A575 /* Utils.swift */; };
 		BF0A658D244F2A3B00280FA6 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* DetailInfoView.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -85,6 +88,8 @@
 		141BFADB2AD3356500AD3126 /* WebAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPITest.swift; sourceTree = "<group>"; };
 		141BFADD2AD3EC3800AD3126 /* MockAPIStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIStub.swift; sourceTree = "<group>"; };
 		141BFADF2AD40E8200AD3126 /* WebAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIMock.swift; sourceTree = "<group>"; };
+		143637312AD44E5200E9A575 /* CircularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
+		143637362AD46DD400E9A575 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				143637352AD4678800E9A575 /* ProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,8 +135,10 @@
 		141BFAA22ABC9FF700AD3126 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				143637302AD44E4200E9A575 /* Modules */,
 				141BFAA32ABCA01800AD3126 /* Extensions.swift */,
 				141BFACB2AC065F200AD3126 /* EntityUtils.swift */,
+				143637362AD46DD400E9A575 /* Utils.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -216,6 +224,14 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		143637302AD44E4200E9A575 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				143637312AD44E5200E9A575 /* CircularImageView.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		BFD945D2244DC5E80012785A = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +307,9 @@
 			dependencies = (
 			);
 			name = iOSEngineerCodeCheck;
+			packageProductDependencies = (
+				143637342AD4678800E9A575 /* ProgressHUD */,
+			);
 			productName = iOSEngineerCodeCheck;
 			productReference = BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */;
 			productType = "com.apple.product-type.application";
@@ -364,6 +383,9 @@
 				Base,
 			);
 			mainGroup = BFD945D2244DC5E80012785A;
+			packageReferences = (
+				143637332AD4678700E9A575 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+			);
 			productRefGroup = BFD945DC244DC5E80012785A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -425,6 +447,7 @@
 				141BFAC12AC019F200AD3126 /* DetailInfoInteractor.swift in Sources */,
 				141BFAB02ABF6F6200AD3126 /* WebAPI.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
+				143637322AD44E5200E9A575 /* CircularImageView.swift in Sources */,
 				141BFAD62AC2000900AD3126 /* WebView.swift in Sources */,
 				141BFAD82AC2000900AD3126 /* WebPresenter.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
@@ -432,6 +455,7 @@
 				141BFAB52ABF71BE00AD3126 /* SearchRepoRequest.swift in Sources */,
 				141BFAB92AC0186000AD3126 /* SearchRouter.swift in Sources */,
 				141BFABB2AC0186C00AD3126 /* SearchInteractor.swift in Sources */,
+				143637372AD46DD400E9A575 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,6 +779,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		143637332AD4678700E9A575 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		143637342AD4678800E9A575 /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 143637332AD4678700E9A575 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BFD945D3244DC5E80012785A /* Project object */;
 }

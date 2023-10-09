@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RepoTableCellContent {
     
@@ -18,6 +19,7 @@ class RepoTableCellContent {
     let openIssues: Int
     let avatarImageURL: String?
     let htmlURL: String
+    var image: UIImage?
     
     init(name: String, language: String?, stars: Int, watchers: Int, forks: Int, openIssues: Int, avatarImageURL: String?, htmlURL: String) {
         self.name = name
@@ -29,6 +31,10 @@ class RepoTableCellContent {
         self.avatarImageURL = avatarImageURL
         self.htmlURL = htmlURL
     }
+    
+    func updateData(image: UIImage){
+        self.image = image
+    }
 }
 
 class RepoSearchContent {
@@ -36,6 +42,7 @@ class RepoSearchContent {
     var repoName: String
     var page: Int
     var lastListCount: Int = 0
+    var isNotLoadingNewElement: Bool = true
     var isNotFinal: Bool = true
     
     init(repoName: String, page: Int = 1) {
@@ -46,6 +53,14 @@ class RepoSearchContent {
     func updatePage(_ lastCunt: Int = 0) {
         self.page += 1
         self.lastListCount = lastCunt
+    }
+    
+    func setLoading() {
+        self.isNotLoadingNewElement = false
+    }
+    
+    func setFinishLoading() {
+        self.isNotLoadingNewElement = true
     }
     
     func setFinal() {

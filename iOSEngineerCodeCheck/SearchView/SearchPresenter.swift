@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SearchPresenter {
     
@@ -17,6 +18,7 @@ protocol SearchPresenter {
     
     //Interactor
     func didFetchReposData(with result: Result<[RepoTableCellContent], Error>, moreInfo: Bool)
+    func updateCellData(with result: Result<UIImage, Error>, at: Int)
     
 }
 
@@ -38,10 +40,11 @@ class SearchUserPresenter {
 }
 
 extension SearchUserPresenter: SearchPresenter {
-    
+
     func searchRepositories(text: String?) {
         
         if let searchText = text, searchText.isNotEmpty {
+            view?.showLoadingView()
             repoSearchData = RepoSearchContent(repoName: searchText)
             interactor.getRepositories(repoSearchData!)
         }
@@ -49,8 +52,9 @@ extension SearchUserPresenter: SearchPresenter {
     
     func updateMoreRepoInfo(lastCount: Int) {
         
-        if repoSearchData != nil && repoSearchData!.isNotFinal {
+        if repoSearchData != nil && repoSearchData!.isNotFinal && repoSearchData!.isNotLoadingNewElement {
             repoSearchData?.updatePage(lastCount)
+            repoSearchData?.setLoading()
             interactor.getRepositories(repoSearchData!)
         }
     }
@@ -61,6 +65,8 @@ extension SearchUserPresenter: SearchPresenter {
     
     func didFetchReposData(with result: Result<[RepoTableCellContent], Error>, moreInfo: Bool) {
         
+        repoSearchData?.setFinishLoading()
+
         switch result {
         case .success(let repoListInfo):
             if repoListInfo.isEmpty {
@@ -68,11 +74,34 @@ extension SearchUserPresenter: SearchPresenter {
                 return
             }
             view?.updateRepoList(list: repoListInfo, moreInfo: moreInfo)
+            getlistImageData(repoListInfo, repoData: repoSearchData!)
             break
         case .failure(_):
+            view?.closeLoading()
             repoSearchData?.setFinal()
             break
         }
+    }
+    
+    func getlistImageData(_ list: [RepoTableCellContent], repoData: RepoSearchContent) {
+        print("LastCount : \(repoData.lastListCount)")
+        for index in 0..<list.count {
+            let element = list[index]
+            interactor.updateDataImage(url: element.avatarImageURL ?? "", at: repoData.lastListCount + index)
+        }
+    }
+    
+    func updateCellData(with result: Result<UIImage, Error>, at: Int) {
+
+        switch result {
+        case .success(let image):
+            view?.updateImageData(image: image, at: at)
+            break
+        case .failure(_):
+            break
+        }
+        
+        
     }
     
     

@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import ProgressHUD
 
 protocol SearchView: AnyObject {
     
+    func showLoadingView()
+    func closeLoading()
     func updateRepoList(list: [RepoTableCellContent], moreInfo: Bool)
+    func updateImageData(image: UIImage, at: Int)
 }
 
 class SearchViewController: UIViewController {
 
+    @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var repoTableView: UITableView!
     @IBOutlet weak var repoSearchBar: UISearchBar!
     
@@ -48,6 +53,26 @@ class SearchViewController: UIViewController {
         repoTableView.register(repoTableViewCell, forCellReuseIdentifier: "RepoInfoCellIdentifier")
         
         self.hideKeyboardWhenTappedAround()
+        
+        backgroundView.applyGradient(colors: [Utils.UIColorFromRGB(0x2B95CE).cgColor,Utils.UIColorFromRGB(0x2ECAD5).cgColor], roundedCorners: [])
+        repoSearchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        repoTableView.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+        
+    }
+    
+    func showLoadingView() {
+        DispatchQueue.main.async {
+            ProgressHUD.animationType = .circleStrokeSpin
+            self.view.isUserInteractionEnabled = false
+            ProgressHUD.show()
+        }
+    }
+    
+    func closeLoading() {
+        DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled = true
+            ProgressHUD.dismiss()
+        }
     }
     
 }
@@ -67,7 +92,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UISc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
+        return 72.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -112,8 +137,16 @@ extension SearchViewController: SearchView {
                 self.repoList = list
             }
             self.repoTableView.reloadData()
+            self.closeLoading()
         }
         
+    }
+    
+    func updateImageData(image: UIImage, at: Int) {
+        DispatchQueue.main.async {
+            self.repoList[at].updateData(image: image)
+            self.repoTableView.reloadRows(at: [IndexPath(item: at, section: 0)], with: .automatic)
+        }
     }
     
 }

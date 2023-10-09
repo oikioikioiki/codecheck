@@ -15,13 +15,15 @@ protocol DetailInfoView: AnyObject {
 
 class DetailInfoViewController: UIViewController {
     
-    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet var backgroundView: UIView!
+    @IBOutlet weak var avatarImageView: CircularImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var starsLabel: UILabel!
     @IBOutlet weak var watchersLabel: UILabel!
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var openIssuesLabel: UILabel!
+    @IBOutlet weak var openWebViewButton: UIButton!
     
     var presenter: DetailInfoPresenter?
     var repoDetailInfo: RepoTableCellContent!
@@ -60,6 +62,11 @@ class DetailInfoViewController: UIViewController {
         forksLabel.text = "\(repoDetailInfo.forks) forks"
         openIssuesLabel.text = "\(repoDetailInfo.openIssues) open issues"
         titleLabel.text = repoDetailInfo.name
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.5
+        avatarImageView.image = repoDetailInfo.image
+        backgroundView.backgroundColor = Utils.UIColorFromRGB(0x91DBF2)
+        openWebViewButton.applyGradient(colors: [Utils.UIColorFromRGB(0x2B95CE).cgColor,Utils.UIColorFromRGB(0x2ECAD5).cgColor])
     }
     
     @IBAction func openWebViewButtonAction(_ sender: Any) {

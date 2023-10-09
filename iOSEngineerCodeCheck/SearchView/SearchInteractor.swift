@@ -11,6 +11,7 @@ import Foundation
 protocol SearchInteractor {
     
     func getRepositories(_ content: RepoSearchContent)
+    func updateDataImage(url: String, at: Int)
     
 }
 
@@ -45,6 +46,22 @@ extension SearchUserInteractor: SearchInteractor {
             
         })
 
+    }
+    
+    func updateDataImage(url: String, at: Int) {
+        
+        apiClient?.getImageData(url: url, completeHandler: { [weak self] (result) in
+            
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                self.presenter?.updateCellData(with: .success(data), at: at)
+                break
+            case .failure(let error):
+                self.presenter?.updateCellData(with: .failure(error), at: at)
+                break
+            }
+        })
     }
     
 }

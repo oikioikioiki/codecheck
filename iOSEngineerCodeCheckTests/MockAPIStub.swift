@@ -61,15 +61,15 @@ class MockSearchPresenter: SearchPresenter {
     }
     
     func searchRepositories(text: String?) {
-
     }
     
     func didTappedRepoTableCell(info: RepoTableCellContent) {
-
     }
     
     func updateMoreRepoInfo(lastCount: Int) {
-
+    }
+    
+    func updateCellData(with result: Result<UIImage, Error>, at: Int) {
     }
 }
 

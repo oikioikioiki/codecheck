@@ -39,7 +39,7 @@ extension DetailInfoUserPresenter: DetailInfoPresenter {
     
     func viewDidLoad(_ data: RepoTableCellContent) {
         
-        if let imageURL = data.avatarImageURL {
+        if let imageURL = data.avatarImageURL, data.image == nil {
             interactor.getAvatarImage(url: imageURL)
         }
     }
